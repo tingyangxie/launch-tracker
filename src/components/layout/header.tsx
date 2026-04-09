@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { CalendarDays, Package, NotebookPen, Menu } from "lucide-react";
+import { CalendarDays, Package, NotebookPen, Compass, Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
@@ -11,6 +11,7 @@ import { useState } from "react";
 const navItems = [
   { href: "/calendar", label: "Calendar", icon: CalendarDays },
   { href: "/releases", label: "Releases", icon: Package },
+  { href: "/discover", label: "Discover", icon: Compass },
   { href: "/notes", label: "Notes", icon: NotebookPen },
 ];
 
