@@ -1,0 +1,78 @@
+"use client";
+
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { CalendarDays, Package, NotebookPen, Menu } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { cn } from "@/lib/utils";
+import { useState } from "react";
+
+const navItems = [
+  { href: "/calendar", label: "Calendar", icon: CalendarDays },
+  { href: "/releases", label: "Releases", icon: Package },
+  { href: "/notes", label: "Notes", icon: NotebookPen },
+];
+
+export function Header() {
+  const pathname = usePathname();
+  const [open, setOpen] = useState(false);
+
+  return (
+    <header className="sticky top-0 z-50 border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+      <div className="mx-auto flex h-14 max-w-5xl items-center px-4">
+        <Link href="/calendar" className="mr-8 flex items-center gap-2 font-semibold">
+          <CalendarDays className="h-5 w-5" />
+          <span>Launch Tracker</span>
+        </Link>
+
+        <nav className="hidden md:flex items-center gap-1">
+          {navItems.map((item) => (
+            <Link key={item.href} href={item.href}>
+              <Button
+                variant={pathname.startsWith(item.href) ? "secondary" : "ghost"}
+                size="sm"
+                className={cn(
+                  "gap-2",
+                  pathname.startsWith(item.href) && "font-medium"
+                )}
+              >
+                <item.icon className="h-4 w-4" />
+                {item.label}
+              </Button>
+            </Link>
+          ))}
+        </nav>
+
+        <div className="ml-auto md:hidden">
+          <Sheet open={open} onOpenChange={setOpen}>
+            <SheetTrigger
+              render={<Button variant="ghost" size="icon" />}
+            >
+              <Menu className="h-5 w-5" />
+            </SheetTrigger>
+            <SheetContent side="right" className="w-64">
+              <nav className="flex flex-col gap-2 mt-8">
+                {navItems.map((item) => (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    onClick={() => setOpen(false)}
+                  >
+                    <Button
+                      variant={pathname.startsWith(item.href) ? "secondary" : "ghost"}
+                      className="w-full justify-start gap-2"
+                    >
+                      <item.icon className="h-4 w-4" />
+                      {item.label}
+                    </Button>
+                  </Link>
+                ))}
+              </nav>
+            </SheetContent>
+          </Sheet>
+        </div>
+      </div>
+    </header>
+  );
+}
