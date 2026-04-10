@@ -28,7 +28,7 @@ export function Header() {
   }
 
   return (
-    <header className="sticky top-0 z-50 border-b border-[#1c1c20] bg-[#131316]/95 backdrop-blur supports-[backdrop-filter]:bg-[#131316]/80">
+    <header className="sticky top-0 z-50 border-b border-[#212121] bg-[#0b0b0b]/95 backdrop-blur supports-[backdrop-filter]:bg-[#0b0b0b]/80">
       <div className="mx-auto flex h-16 w-full max-w-[90rem] items-center px-4 sm:px-6 lg:px-8">
         <Link
           href="/calendar"
@@ -76,7 +76,7 @@ export function Header() {
             >
               <Menu className="h-5 w-5" />
             </SheetTrigger>
-            <SheetContent side="right" className="w-64 border-[#2a2a30] bg-[#131316]">
+            <SheetContent side="right" className="w-64 border-[#353535] bg-[#0b0b0b]">
               <nav className="flex flex-col gap-2 mt-8">
                 {navItems.map((item) => (
                   <Link

@@ -40,7 +40,7 @@ const SOURCE_STYLES: Record<
 > = {
   github_trending: {
     label: "GitHub",
-    className: "bg-[#1c1c20] text-[#e0e0e6] hover:bg-[#0052ef] hover:text-white",
+    className: "bg-[#212121] text-[#ededed] hover:bg-[#0052ef] hover:text-white",
   },
   github_releases: {
     label: "Active",
@@ -52,7 +52,7 @@ const SOURCE_STYLES: Record<
   },
   devto: {
     label: "Dev.to",
-    className: "bg-[#2a2a30] text-[#e0e0e6] hover:bg-[#0052ef] hover:text-white",
+    className: "bg-[#353535] text-[#ededed] hover:bg-[#0052ef] hover:text-white",
   },
 };
 

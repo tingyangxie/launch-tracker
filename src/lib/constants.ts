@@ -13,10 +13,10 @@ export const SOURCE_TYPES: Record<
   },
   community: {
     label: "Community",
-    color: "bg-[#2a2a30]",
-    dot: "bg-[#a1a1ab]",
+    color: "bg-[#353535]",
+    dot: "bg-[#b9b9b9]",
   },
-  other: { label: "Other", color: "bg-[#71717b]", dot: "bg-[#71717b]" },
+  other: { label: "Other", color: "bg-[#797979]", dot: "bg-[#797979]" },
 };
 
 export const CATEGORIES: Record<ReleaseCategory, { label: string }> = {
