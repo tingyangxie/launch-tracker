@@ -356,7 +356,7 @@ export default function DiscoverPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-2xl font-bold">Discover</h1>
+        <h1 className="text-2xl font-medium">Discover</h1>
         <p className="text-sm text-muted-foreground mt-1">
           Find trending projects across GitHub, Hacker News, and Dev.to.
           One-click import to your tracker.

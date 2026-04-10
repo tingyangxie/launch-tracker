@@ -21,7 +21,7 @@ export default function NewReleasePage() {
 
   return (
     <div className="space-y-6">
-      <h1 className="text-2xl font-bold">Add New Release</h1>
+      <h1 className="text-2xl font-medium">Add New Release</h1>
       <ReleaseForm products={products} />
     </div>
   );

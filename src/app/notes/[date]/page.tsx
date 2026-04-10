@@ -30,7 +30,7 @@ export default function NoteDatePage({
             <ArrowLeft className="h-4 w-4" />
           </Button>
         </Link>
-        <h1 className="text-2xl font-bold">
+        <h1 className="text-2xl font-medium">
           {format(parsedDate, "EEEE, MMMM d, yyyy")}
         </h1>
       </div>

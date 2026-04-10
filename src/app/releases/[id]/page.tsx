@@ -80,7 +80,7 @@ export default function ReleaseDetailPage({
             <ArrowLeft className="h-4 w-4" />
           </Button>
         </Link>
-        <h1 className="flex-1 text-2xl font-bold">
+        <h1 className="flex-1 text-2xl font-medium">
           {release.title}
           {release.is_major && (
             <Star className="ml-2 inline h-5 w-5 text-amber-500" />

@@ -90,7 +90,7 @@ export function CalendarGrid() {
       {selectedDate && (
         <div className="space-y-3 rounded-lg border p-4">
           <div className="flex items-center justify-between">
-            <h3 className="font-semibold">
+            <h3 className="font-medium">
               {format(selectedDate, "EEEE, MMMM d, yyyy")}
             </h3>
             <Link href={`/notes/${format(selectedDate, "yyyy-MM-dd")}`}>

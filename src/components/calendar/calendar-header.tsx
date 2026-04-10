@@ -19,7 +19,7 @@ export function CalendarHeader({
 }: CalendarHeaderProps) {
   return (
     <div className="flex items-center justify-between">
-      <h2 className="text-xl font-semibold">
+      <h2 className="text-xl font-medium">
         {format(currentMonth, "MMMM yyyy")}
       </h2>
       <div className="flex items-center gap-1">
