@@ -50,9 +50,9 @@ const SOURCE_STYLES: Record<
     label: "HN",
     className: "bg-orange-500 text-white hover:bg-orange-400",
   },
-  reddit: {
-    label: "Reddit",
-    className: "bg-red-500 text-white hover:bg-red-400",
+  devto: {
+    label: "Dev.to",
+    className: "bg-black text-white hover:bg-gray-800",
   },
 };
 
@@ -177,7 +177,7 @@ export function DiscoverCard({ item }: { item: DiscoverItem }) {
         github_trending: "GitHub Trending",
         github_releases: "GitHub Active",
         hackernews: "Hacker News",
-        reddit: "Reddit",
+        devto: "Dev.to",
       };
 
       const { error: releaseError } = await supabase.from("releases").insert({
@@ -273,9 +273,6 @@ export function DiscoverCard({ item }: { item: DiscoverItem }) {
                 <Clock className="h-3 w-3" />
                 {timeAgo(item.createdAt)}
               </span>
-              {item.subreddit && (
-                <span className="text-orange-600">r/{item.subreddit}</span>
-              )}
             </div>
 
             <div className="flex flex-wrap items-center gap-1">
@@ -296,9 +293,7 @@ export function DiscoverCard({ item }: { item: DiscoverItem }) {
                 >
                   {item.source === "hackernews"
                     ? "discussion"
-                    : item.source === "reddit"
-                      ? "comments"
-                      : "link"}
+                    : "link"}
                 </a>
               )}
             </div>

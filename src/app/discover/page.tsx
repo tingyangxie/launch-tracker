@@ -41,14 +41,18 @@ const TOPICS = [
   { value: "framework", label: "Frameworks" },
 ];
 
-const SUBREDDITS = [
-  { value: "all", label: "All Subreddits" },
-  { value: "programming", label: "r/programming" },
-  { value: "sideproject", label: "r/SideProject" },
-  { value: "webdev", label: "r/webdev" },
-  { value: "selfhosted", label: "r/selfhosted" },
-  { value: "opensource", label: "r/opensource" },
-  { value: "ml", label: "r/MachineLearning" },
+const DEVTO_TAGS = [
+  { value: "", label: "All Tags" },
+  { value: "webdev", label: "Web Dev" },
+  { value: "javascript", label: "JavaScript" },
+  { value: "python", label: "Python" },
+  { value: "ai", label: "AI" },
+  { value: "opensource", label: "Open Source" },
+  { value: "devops", label: "DevOps" },
+  { value: "rust", label: "Rust" },
+  { value: "go", label: "Go" },
+  { value: "react", label: "React" },
+  { value: "database", label: "Database" },
 ];
 
 // --- Sub-tab components ---
@@ -251,39 +255,42 @@ function HackerNewsTab() {
   );
 }
 
-function RedditTab() {
-  const [subreddit, setSubreddit] = useState("all");
-  const [sort, setSort] = useState("hot");
+function DevToTab() {
+  const [tag, setTag] = useState("");
+  const [period, setPeriod] = useState("week");
 
   const { items, loading, error, refetch } = useDiscover({
-    source: "reddit",
-    subreddit,
-    redditSort: sort,
+    source: "devto",
+    devtoTag: tag,
+    devtoPeriod: period,
   });
 
   return (
     <div className="space-y-4">
       <div className="flex flex-wrap items-center gap-3">
-        <Select value={subreddit} onValueChange={(v) => v && setSubreddit(v)}>
-          <SelectTrigger className="w-44">
-            <SelectValue />
+        <Select
+          value={tag || "all"}
+          onValueChange={(v) => setTag(v === "all" ? "" : (v ?? ""))}
+        >
+          <SelectTrigger className="w-40">
+            <SelectValue placeholder="All Tags" />
           </SelectTrigger>
           <SelectContent>
-            {SUBREDDITS.map((s) => (
-              <SelectItem key={s.value} value={s.value}>
-                {s.label}
+            {DEVTO_TAGS.map((t) => (
+              <SelectItem key={t.value || "all"} value={t.value || "all"}>
+                {t.label}
               </SelectItem>
             ))}
           </SelectContent>
         </Select>
-        <Select value={sort} onValueChange={(v) => v && setSort(v)}>
-          <SelectTrigger className="w-28">
+        <Select value={period} onValueChange={(v) => v && setPeriod(v)}>
+          <SelectTrigger className="w-32">
             <SelectValue />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="hot">Hot</SelectItem>
-            <SelectItem value="new">New</SelectItem>
-            <SelectItem value="top">Top</SelectItem>
+            <SelectItem value="day">Today</SelectItem>
+            <SelectItem value="week">This Week</SelectItem>
+            <SelectItem value="month">This Month</SelectItem>
           </SelectContent>
         </Select>
         <Button
@@ -299,7 +306,7 @@ function RedditTab() {
           Refresh
         </Button>
         <span className="text-xs text-muted-foreground">
-          {items.length} posts
+          {items.length} articles
         </span>
       </div>
       <ItemList items={items} loading={loading} error={error} />
@@ -351,7 +358,7 @@ export default function DiscoverPage() {
       <div>
         <h1 className="text-2xl font-bold">Discover</h1>
         <p className="text-sm text-muted-foreground mt-1">
-          Find trending projects across GitHub, Hacker News, and Reddit.
+          Find trending projects across GitHub, Hacker News, and Dev.to.
           One-click import to your tracker.
         </p>
       </div>
@@ -362,7 +369,7 @@ export default function DiscoverPage() {
           <TabsTrigger value="github">GitHub Trending</TabsTrigger>
           <TabsTrigger value="releases">Active Repos</TabsTrigger>
           <TabsTrigger value="hackernews">Hacker News</TabsTrigger>
-          <TabsTrigger value="reddit">Reddit</TabsTrigger>
+          <TabsTrigger value="devto">Dev.to</TabsTrigger>
         </TabsList>
 
         <TabsContent value="all">
@@ -377,8 +384,8 @@ export default function DiscoverPage() {
         <TabsContent value="hackernews">
           <HackerNewsTab />
         </TabsContent>
-        <TabsContent value="reddit">
-          <RedditTab />
+        <TabsContent value="devto">
+          <DevToTab />
         </TabsContent>
       </Tabs>
     </div>

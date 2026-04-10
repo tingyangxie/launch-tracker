@@ -6,7 +6,7 @@ export type DiscoverSource =
   | "github_trending"
   | "github_releases"
   | "hackernews"
-  | "reddit";
+  | "devto";
 
 export interface DiscoverItem {
   id: string;
@@ -27,8 +27,6 @@ export interface DiscoverItem {
   repoUrl?: string;
   homepage?: string;
   forks?: number;
-  // Reddit-specific
-  subreddit?: string;
 }
 
 interface UseDiscoverOptions {
@@ -38,8 +36,8 @@ interface UseDiscoverOptions {
   topic?: string;
   hnFilter?: string;
   hnQuery?: string;
-  subreddit?: string;
-  redditSort?: string;
+  devtoTag?: string;
+  devtoPeriod?: string;
 }
 
 export function useDiscover(options: UseDiscoverOptions) {
@@ -54,7 +52,7 @@ export function useDiscover(options: UseDiscoverOptions) {
     try {
       const sources: DiscoverSource[] =
         options.source === "all"
-          ? ["github_trending", "hackernews", "reddit", "github_releases"]
+          ? ["github_trending", "hackernews", "devto", "github_releases"]
           : [options.source];
 
       const results = await Promise.allSettled(
@@ -70,8 +68,8 @@ export function useDiscover(options: UseDiscoverOptions) {
             case "hackernews":
               url = `/api/discover/hackernews?filter=${options.hnFilter || "top"}&query=${encodeURIComponent(options.hnQuery || "")}`;
               break;
-            case "reddit":
-              url = `/api/discover/reddit?subreddit=${options.subreddit || "all"}&sort=${options.redditSort || "hot"}`;
+            case "devto":
+              url = `/api/discover/reddit?tag=${options.devtoTag || ""}&period=${options.devtoPeriod || "week"}`;
               break;
           }
           const res = await fetch(url);
@@ -92,12 +90,11 @@ export function useDiscover(options: UseDiscoverOptions) {
       }
 
       if (options.source === "all") {
-        // Interleave sources for variety instead of sorting purely by score
         allItems.sort((a, b) => {
           const weight: Record<string, number> = {
             github_trending: 1,
             hackernews: 3,
-            reddit: 1.5,
+            devto: 2,
             github_releases: 1,
           };
           const scoreA = a.score * (weight[a.source] || 1);
@@ -122,8 +119,8 @@ export function useDiscover(options: UseDiscoverOptions) {
     options.topic,
     options.hnFilter,
     options.hnQuery,
-    options.subreddit,
-    options.redditSort,
+    options.devtoTag,
+    options.devtoPeriod,
   ]);
 
   useEffect(() => {
