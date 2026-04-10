@@ -22,8 +22,15 @@ export default function ReleasesPage() {
 
   return (
     <div className="space-y-6">
-      <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-medium">Releases</h1>
+      <div className="flex flex-wrap items-end justify-between gap-3">
+        <div className="space-y-2">
+          <p className="lt-technical-label">Releases</p>
+          <h1 className="lt-page-title">Launch Feed</h1>
+          <p className="lt-page-description">
+            Filter major updates, compare sources, and keep one canonical timeline
+            of everything you track.
+          </p>
+        </div>
         <Link href="/releases/new">
           <Button className="gap-2">
             <Plus className="h-4 w-4" />
@@ -44,7 +51,7 @@ export default function ReleasesPage() {
       {loading && (
         <div className="space-y-2">
           {Array.from({ length: 5 }).map((_, i) => (
-            <div key={i} className="h-24 animate-pulse rounded-lg bg-muted" />
+            <div key={i} className="h-24 animate-pulse rounded-[6px] border border-border bg-card" />
           ))}
         </div>
       )}

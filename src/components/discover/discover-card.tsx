@@ -40,19 +40,19 @@ const SOURCE_STYLES: Record<
 > = {
   github_trending: {
     label: "GitHub",
-    className: "bg-gray-800 text-white hover:bg-gray-700",
+    className: "bg-[#212121] text-[#ededed] hover:bg-[#0052ef] hover:text-white",
   },
   github_releases: {
     label: "Active",
-    className: "bg-blue-600 text-white hover:bg-blue-500",
+    className: "bg-[#0052ef] text-white hover:bg-[#0a43b8]",
   },
   hackernews: {
     label: "HN",
-    className: "bg-orange-500 text-white hover:bg-orange-400",
+    className: "bg-[#f36458] text-white hover:bg-[#ea4f41]",
   },
   devto: {
     label: "Dev.to",
-    className: "bg-black text-white hover:bg-gray-800",
+    className: "bg-[#353535] text-[#ededed] hover:bg-[#0052ef] hover:text-white",
   },
 };
 
@@ -208,7 +208,7 @@ export function DiscoverCard({ item }: { item: DiscoverItem }) {
   }
 
   return (
-    <Card>
+    <Card className="transition-colors hover:border-[#0052ef]/70 hover:bg-accent/50">
       <CardContent className="p-4">
         <div className="flex items-start gap-3">
           <div className="min-w-0 flex-1 space-y-1.5">
@@ -220,7 +220,7 @@ export function DiscoverCard({ item }: { item: DiscoverItem }) {
                 href={item.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-medium hover:underline truncate"
+                className="truncate text-[0.98rem] font-[420] tracking-[-0.015em] hover:underline"
               >
                 {item.title}
               </a>
@@ -235,7 +235,7 @@ export function DiscoverCard({ item }: { item: DiscoverItem }) {
             </div>
 
             {item.description && (
-              <p className="text-sm text-muted-foreground line-clamp-2">
+              <p className="line-clamp-2 text-[0.88rem] text-muted-foreground">
                 {item.description}
               </p>
             )}

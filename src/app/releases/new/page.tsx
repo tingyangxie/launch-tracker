@@ -21,7 +21,10 @@ export default function NewReleasePage() {
 
   return (
     <div className="space-y-6">
-      <h1 className="text-2xl font-medium">Add New Release</h1>
+      <div className="space-y-2">
+        <p className="lt-technical-label">Releases</p>
+        <h1 className="lt-page-title">Add New Release</h1>
+      </div>
       <ReleaseForm products={products} />
     </div>
   );

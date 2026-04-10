@@ -13,8 +13,15 @@ export default function NotesPage() {
 
   return (
     <div className="space-y-6">
-      <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-medium">Notes</h1>
+      <div className="flex flex-wrap items-end justify-between gap-3">
+        <div className="space-y-2">
+          <p className="lt-technical-label">Notes</p>
+          <h1 className="lt-page-title">Daily Capture</h1>
+          <p className="lt-page-description">
+            Keep context beside each launch day so decisions and follow-ups never get
+            lost.
+          </p>
+        </div>
         <Link href={`/notes/${todayStr}`}>
           <Button className="gap-2">
             <Plus className="h-4 w-4" />
@@ -26,7 +33,7 @@ export default function NotesPage() {
       {loading && (
         <div className="space-y-2">
           {Array.from({ length: 5 }).map((_, i) => (
-            <div key={i} className="h-20 animate-pulse rounded-lg bg-muted" />
+            <div key={i} className="h-20 animate-pulse rounded-[6px] border border-border bg-card" />
           ))}
         </div>
       )}

@@ -27,10 +27,10 @@ export function CalendarCell({
     <button
       onClick={() => onClick(date)}
       className={cn(
-        "flex h-20 flex-col items-start gap-1 rounded-md border p-1.5 text-left text-sm transition-colors hover:bg-accent",
+        "flex h-20 flex-col items-start gap-1 rounded-[6px] border border-border bg-card p-1.5 text-left text-sm tracking-[-0.01em] transition-colors hover:border-[#0052ef] hover:bg-accent",
         !inMonth && "opacity-30",
         isSelected && "border-primary bg-accent",
-        today && !isSelected && "border-blue-400"
+        today && !isSelected && "border-[#55beff]"
       )}
     >
       <span

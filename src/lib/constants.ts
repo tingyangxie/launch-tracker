@@ -4,19 +4,19 @@ export const SOURCE_TYPES: Record<
   ReleaseSource,
   { label: string; color: string; dot: string }
 > = {
-  big_tech: { label: "Big Tech", color: "bg-blue-500", dot: "bg-blue-400" },
-  startup: { label: "Startup", color: "bg-purple-500", dot: "bg-purple-400" },
+  big_tech: { label: "Big Tech", color: "bg-[#0052ef]", dot: "bg-[#55beff]" },
+  startup: { label: "Startup", color: "bg-[#f36458]", dot: "bg-[#f36458]" },
   open_source: {
     label: "Open Source",
-    color: "bg-green-500",
-    dot: "bg-green-400",
+    color: "bg-[#19d600]",
+    dot: "bg-[#19d600]",
   },
   community: {
     label: "Community",
-    color: "bg-orange-500",
-    dot: "bg-orange-400",
+    color: "bg-[#353535]",
+    dot: "bg-[#b9b9b9]",
   },
-  other: { label: "Other", color: "bg-gray-500", dot: "bg-gray-400" },
+  other: { label: "Other", color: "bg-[#797979]", dot: "bg-[#797979]" },
 };
 
 export const CATEGORIES: Record<ReleaseCategory, { label: string }> = {

@@ -53,7 +53,7 @@ export default function ReleaseDetailPage({
   }
 
   if (loading) {
-    return <div className="h-48 animate-pulse rounded-lg bg-muted" />;
+    return <div className="h-48 animate-pulse rounded-[6px] border border-border bg-card" />;
   }
 
   if (!release) {
@@ -76,11 +76,11 @@ export default function ReleaseDetailPage({
     <div className="space-y-6">
       <div className="flex items-center gap-2">
         <Link href="/releases">
-          <Button variant="ghost" size="icon" className="h-8 w-8">
+          <Button variant="ghost" size="icon-sm">
             <ArrowLeft className="h-4 w-4" />
           </Button>
         </Link>
-        <h1 className="flex-1 text-2xl font-medium">
+        <h1 className="lt-section-title flex-1">
           {release.title}
           {release.is_major && (
             <Star className="ml-2 inline h-5 w-5 text-amber-500" />
@@ -101,24 +101,24 @@ export default function ReleaseDetailPage({
         <CardContent className="space-y-4 p-6">
           <div className="grid gap-4 sm:grid-cols-2">
             <div>
-              <p className="text-sm text-muted-foreground">Product</p>
-              <p className="font-medium">{release.product_name}</p>
+              <p className="lt-technical-label">Product</p>
+              <p className="text-[1rem] font-[420] tracking-[-0.015em]">{release.product_name}</p>
             </div>
             {release.organization && (
               <div>
-                <p className="text-sm text-muted-foreground">Organization</p>
-                <p className="font-medium">{release.organization}</p>
+                <p className="lt-technical-label">Organization</p>
+                <p className="text-[1rem] font-[420] tracking-[-0.015em]">{release.organization}</p>
               </div>
             )}
             {release.version && (
               <div>
-                <p className="text-sm text-muted-foreground">Version</p>
-                <p className="font-medium">{release.version}</p>
+                <p className="lt-technical-label">Version</p>
+                <p className="text-[1rem] font-[420] tracking-[-0.015em]">{release.version}</p>
               </div>
             )}
             <div>
-              <p className="text-sm text-muted-foreground">Release Date</p>
-              <p className="font-medium">
+              <p className="lt-technical-label">Release Date</p>
+              <p className="text-[1rem] font-[420] tracking-[-0.015em]">
                 {format(parseISO(release.release_date), "MMMM d, yyyy")}
               </p>
             </div>
@@ -136,8 +136,8 @@ export default function ReleaseDetailPage({
 
           {release.summary && (
             <div>
-              <p className="text-sm text-muted-foreground">Summary</p>
-              <p className="mt-1">{release.summary}</p>
+              <p className="lt-technical-label">Summary</p>
+              <p className="mt-1 text-[0.95rem] leading-[1.55] text-muted-foreground">{release.summary}</p>
             </div>
           )}
 

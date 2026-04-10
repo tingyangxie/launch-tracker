@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
-import { Inter, IBM_Plex_Mono } from "next/font/google";
+import { Space_Grotesk, IBM_Plex_Mono } from "next/font/google";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Header } from "@/components/layout/header";
 import "./globals.css";
 
-const inter = Inter({
-  variable: "--font-inter",
+const spaceGrotesk = Space_Grotesk({
+  variable: "--font-space-grotesk",
   subsets: ["latin"],
+  display: "swap",
 });
 
 const ibmPlexMono = IBM_Plex_Mono({
@@ -28,14 +29,16 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${ibmPlexMono.variable} dark h-full antialiased`}
+      className={`${spaceGrotesk.variable} ${ibmPlexMono.variable} dark h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">
+      <body className="min-h-full bg-background text-foreground">
         <TooltipProvider>
-          <Header />
-          <main className="mx-auto w-full max-w-5xl flex-1 px-4 py-6">
-            {children}
-          </main>
+          <div className="flex min-h-full flex-col">
+            <Header />
+            <main className="mx-auto w-full max-w-[90rem] flex-1 px-4 pb-10 pt-6 sm:px-6 lg:px-8 lg:pt-8">
+              {children}
+            </main>
+          </div>
         </TooltipProvider>
       </body>
     </html>

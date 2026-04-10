@@ -331,7 +331,7 @@ function ItemList({
     return (
       <div className="space-y-2">
         {Array.from({ length: 5 }).map((_, i) => (
-          <div key={i} className="h-24 animate-pulse rounded-lg bg-muted" />
+          <div key={i} className="h-24 animate-pulse rounded-[6px] border border-border bg-card" />
         ))}
       </div>
     );
@@ -355,16 +355,17 @@ function ItemList({
 export default function DiscoverPage() {
   return (
     <div className="space-y-6">
-      <div>
-        <h1 className="text-2xl font-medium">Discover</h1>
-        <p className="text-sm text-muted-foreground mt-1">
+      <div className="space-y-2">
+        <p className="lt-technical-label">Discover</p>
+        <h1 className="lt-page-title">Source Radar</h1>
+        <p className="lt-page-description">
           Find trending projects across GitHub, Hacker News, and Dev.to.
           One-click import to your tracker.
         </p>
       </div>
 
       <Tabs defaultValue="all" className="space-y-4">
-        <TabsList>
+        <TabsList className="h-auto w-full flex-wrap justify-start md:w-fit">
           <TabsTrigger value="all">All Sources</TabsTrigger>
           <TabsTrigger value="github">GitHub Trending</TabsTrigger>
           <TabsTrigger value="releases">Active Repos</TabsTrigger>

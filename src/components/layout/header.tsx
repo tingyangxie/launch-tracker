@@ -28,22 +28,25 @@ export function Header() {
   }
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="mx-auto flex h-14 max-w-5xl items-center px-4">
-        <Link href="/calendar" className="mr-8 flex items-center gap-2 font-medium tracking-tight">
-          <CalendarDays className="h-5 w-5" />
+    <header className="sticky top-0 z-50 border-b border-[#212121] bg-[#0b0b0b]/95 backdrop-blur supports-[backdrop-filter]:bg-[#0b0b0b]/80">
+      <div className="mx-auto flex h-16 w-full max-w-[90rem] items-center px-4 sm:px-6 lg:px-8">
+        <Link
+          href="/calendar"
+          className="mr-10 flex items-center gap-2 text-[0.95rem] font-medium tracking-[-0.02em]"
+        >
+          <CalendarDays className="h-4 w-4" />
           <span>Launch Tracker</span>
         </Link>
 
-        <nav className="hidden md:flex items-center gap-1">
+        <nav className="hidden items-center gap-1 md:flex">
           {navItems.map((item) => (
             <Link key={item.href} href={item.href}>
               <Button
                 variant={pathname.startsWith(item.href) ? "secondary" : "ghost"}
                 size="sm"
                 className={cn(
-                  "gap-2",
-                  pathname.startsWith(item.href) && "font-medium"
+                  "gap-2 px-3 tracking-[-0.01em]",
+                  pathname.startsWith(item.href) && "font-medium text-foreground"
                 )}
               >
                 <item.icon className="h-4 w-4" />
@@ -60,6 +63,7 @@ export function Header() {
               size="icon"
               onClick={handleLogout}
               title="Sign out"
+              className="text-muted-foreground hover:text-foreground"
             >
               <LogOut className="h-4 w-4" />
             </Button>
@@ -72,7 +76,7 @@ export function Header() {
             >
               <Menu className="h-5 w-5" />
             </SheetTrigger>
-            <SheetContent side="right" className="w-64">
+            <SheetContent side="right" className="w-64 border-[#353535] bg-[#0b0b0b]">
               <nav className="flex flex-col gap-2 mt-8">
                 {navItems.map((item) => (
                   <Link

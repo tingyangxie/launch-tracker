@@ -37,7 +37,7 @@ export function NoteEditor({ date }: NoteEditorProps) {
   return (
     <div className="space-y-2">
       <div className="flex items-center justify-between">
-        <h3 className="font-medium">Daily Notes</h3>
+        <h3 className="text-[1rem] font-[420] tracking-[-0.015em]">Daily Notes</h3>
         {saving ? (
           <Badge variant="secondary" className="gap-1">
             <Loader2 className="h-3 w-3 animate-spin" />
@@ -57,7 +57,7 @@ export function NoteEditor({ date }: NoteEditorProps) {
         rows={10}
         className="resize-y font-mono text-sm"
       />
-      <p className="text-xs text-muted-foreground">
+      <p className="lt-technical-label">
         Notes auto-save as you type. Supports plain text.
       </p>
     </div>

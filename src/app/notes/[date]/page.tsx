@@ -26,11 +26,11 @@ export default function NoteDatePage({
     <div className="space-y-6">
       <div className="flex items-center gap-2">
         <Link href="/notes">
-          <Button variant="ghost" size="icon" className="h-8 w-8">
+          <Button variant="ghost" size="icon-sm">
             <ArrowLeft className="h-4 w-4" />
           </Button>
         </Link>
-        <h1 className="text-2xl font-medium">
+        <h1 className="lt-section-title">
           {format(parsedDate, "EEEE, MMMM d, yyyy")}
         </h1>
       </div>
@@ -38,9 +38,9 @@ export default function NoteDatePage({
       <NoteEditor date={date} />
 
       <div className="space-y-3">
-        <h3 className="font-medium">Releases on this day</h3>
+        <h3 className="text-[1rem] font-[420] tracking-[-0.015em]">Releases on this day</h3>
         {loading && (
-          <div className="h-20 animate-pulse rounded-lg bg-muted" />
+          <div className="h-20 animate-pulse rounded-[6px] border border-border bg-card" />
         )}
         {!loading && releases.length === 0 && (
           <p className="text-sm text-muted-foreground">

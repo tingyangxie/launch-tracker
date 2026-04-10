@@ -38,7 +38,7 @@ export function CalendarGrid() {
     : [];
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-5">
       <CalendarHeader
         currentMonth={currentMonth}
         onPrevMonth={goToPrevMonth}
@@ -51,7 +51,7 @@ export function CalendarGrid() {
           {Array.from({ length: 35 }).map((_, i) => (
             <div
               key={i}
-              className="h-20 animate-pulse rounded-md bg-muted"
+              className="h-20 animate-pulse rounded-[6px] border border-border bg-card"
             />
           ))}
         </div>
@@ -63,7 +63,7 @@ export function CalendarGrid() {
             {WEEKDAYS.map((day) => (
               <div
                 key={day}
-                className="py-1 text-center text-xs font-medium text-muted-foreground"
+                className="lt-technical-label py-1 text-center"
               >
                 {day}
               </div>
@@ -88,9 +88,9 @@ export function CalendarGrid() {
       )}
 
       {selectedDate && (
-        <div className="space-y-3 rounded-lg border p-4">
+        <div className="space-y-3 rounded-[6px] border border-border bg-card p-4">
           <div className="flex items-center justify-between">
-            <h3 className="font-medium">
+            <h3 className="lt-section-title">
               {format(selectedDate, "EEEE, MMMM d, yyyy")}
             </h3>
             <Link href={`/notes/${format(selectedDate, "yyyy-MM-dd")}`}>

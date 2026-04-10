@@ -13,7 +13,7 @@ export function ReleaseCard({ release }: { release: ReleaseWithProduct }) {
   const category = CATEGORIES[release.category];
 
   return (
-    <Card className="transition-colors hover:bg-accent/50">
+    <Card className="transition-colors hover:border-[#0052ef]/70 hover:bg-accent/50">
       <CardContent className="flex items-start gap-3 p-3">
         <div
           className={cn("mt-1 h-2 w-2 shrink-0 rounded-full", source.dot)}
@@ -22,7 +22,7 @@ export function ReleaseCard({ release }: { release: ReleaseWithProduct }) {
           <div className="flex items-start justify-between gap-2">
             <Link
               href={`/releases/${release.id}`}
-              className="font-medium leading-tight hover:underline"
+              className="text-[0.97rem] font-[420] leading-tight tracking-[-0.015em] hover:underline"
             >
               {release.title}
               {release.is_major && (
@@ -30,7 +30,7 @@ export function ReleaseCard({ release }: { release: ReleaseWithProduct }) {
               )}
             </Link>
           </div>
-          <div className="flex flex-wrap items-center gap-1.5 text-xs text-muted-foreground">
+          <div className="flex flex-wrap items-center gap-1.5 text-[0.76rem] text-muted-foreground">
             <span>{release.product_name}</span>
             {release.organization && (
               <>
@@ -59,7 +59,7 @@ export function ReleaseCard({ release }: { release: ReleaseWithProduct }) {
             ))}
           </div>
           {release.summary && (
-            <p className="text-xs text-muted-foreground line-clamp-2">
+            <p className="line-clamp-2 text-[0.84rem] text-muted-foreground">
               {release.summary}
             </p>
           )}
