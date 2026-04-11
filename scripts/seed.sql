@@ -1,21 +1,25 @@
--- Seed data: Products
-INSERT INTO products (id, name, organization, source_type, website_url, repo_url, description) VALUES
-  ('a1000000-0000-0000-0000-000000000001', 'React', 'Meta', 'big_tech', 'https://react.dev', 'https://github.com/facebook/react', 'JavaScript library for building user interfaces'),
-  ('a1000000-0000-0000-0000-000000000002', 'Next.js', 'Vercel', 'startup', 'https://nextjs.org', 'https://github.com/vercel/next.js', 'The React framework for the web'),
-  ('a1000000-0000-0000-0000-000000000003', 'PostgreSQL', 'PostgreSQL Global Development Group', 'open_source', 'https://postgresql.org', 'https://github.com/postgres/postgres', 'The world''s most advanced open source database'),
-  ('a1000000-0000-0000-0000-000000000004', 'Claude', 'Anthropic', 'startup', 'https://claude.ai', NULL, 'AI assistant by Anthropic'),
-  ('a1000000-0000-0000-0000-000000000005', 'Tailwind CSS', 'Tailwind Labs', 'open_source', 'https://tailwindcss.com', 'https://github.com/tailwindlabs/tailwindcss', 'Utility-first CSS framework'),
-  ('a1000000-0000-0000-0000-000000000006', 'Rust', 'Rust Foundation', 'open_source', 'https://www.rust-lang.org', 'https://github.com/rust-lang/rust', 'A language empowering everyone to build reliable software'),
-  ('a1000000-0000-0000-0000-000000000007', 'Supabase', 'Supabase', 'open_source', 'https://supabase.com', 'https://github.com/supabase/supabase', 'The open source Firebase alternative'),
-  ('a1000000-0000-0000-0000-000000000008', 'Bun', 'Oven', 'open_source', 'https://bun.sh', 'https://github.com/oven-sh/bun', 'Incredibly fast JavaScript runtime');
+-- Clear existing data
+DELETE FROM releases;
+DELETE FROM products;
+DELETE FROM daily_notes;
 
--- Seed data: Releases
-INSERT INTO releases (product_id, version, title, release_date, category, summary, is_major, tags) VALUES
-  ('a1000000-0000-0000-0000-000000000001', '19.1', 'React 19.1 Released', '2026-03-28', 'web_framework', 'Stabilized server components and improved suspense handling.', true, ARRAY['frontend','server-components']),
-  ('a1000000-0000-0000-0000-000000000002', '15.3', 'Next.js 15.3', '2026-03-25', 'web_framework', 'Improved turbopack stability and new caching strategies.', false, ARRAY['frontend','ssr','turbopack']),
-  ('a1000000-0000-0000-0000-000000000003', '17.3', 'PostgreSQL 17.3', '2026-03-15', 'database', 'Minor release with bug fixes and performance improvements.', false, ARRAY['database','sql']),
-  ('a1000000-0000-0000-0000-000000000004', 'Opus 4.6', 'Claude Opus 4.6 Released', '2026-04-09', 'ai_ml', 'New model with improved reasoning and coding capabilities.', true, ARRAY['llm','ai','api']),
-  ('a1000000-0000-0000-0000-000000000005', '4.1', 'Tailwind CSS v4.1', '2026-03-20', 'web_framework', 'New utilities and improved performance.', false, ARRAY['css','frontend']),
-  ('a1000000-0000-0000-0000-000000000006', '1.86', 'Rust 1.86.0', '2026-04-03', 'language_runtime', 'New stabilized APIs and compiler improvements.', false, ARRAY['systems','compiler']),
-  ('a1000000-0000-0000-0000-000000000007', 'GA', 'Supabase Storage v3', '2026-04-01', 'cloud_infra', 'Resumable uploads and improved CDN integration.', true, ARRAY['storage','backend']),
-  ('a1000000-0000-0000-0000-000000000008', '1.2', 'Bun 1.2', '2026-03-10', 'language_runtime', 'Windows support and Node.js compatibility improvements.', true, ARRAY['runtime','bundler']);
+-- Real products (April 2026)
+INSERT INTO products (id, name, organization, source_type, website_url, repo_url, description) VALUES
+  ('b1000000-0000-0000-0000-000000000001', 'Gemma 4', 'Google DeepMind', 'big_tech', 'https://ai.google.dev/gemma', 'https://github.com/google-deepmind/gemma', 'Open-weight AI model family with E2B, E4B, 26B MoE, and 31B Dense variants'),
+  ('b1000000-0000-0000-0000-000000000002', 'Qwen 3.6-Plus', 'Alibaba', 'big_tech', 'https://qwenlm.github.io', 'https://github.com/QwenLM/Qwen', 'Flagship AI model with 1M context window and native agentic coding'),
+  ('b1000000-0000-0000-0000-000000000003', 'Cursor', 'Anysphere', 'startup', 'https://cursor.com', NULL, 'AI-first code editor with integrated agents'),
+  ('b1000000-0000-0000-0000-000000000004', 'GitHub Copilot SDK', 'GitHub', 'big_tech', 'https://github.com/features/copilot', 'https://github.com/github/copilot-sdk', 'SDK to embed Copilot agentic capabilities into apps and services'),
+  ('b1000000-0000-0000-0000-000000000005', 'VS Code', 'Microsoft', 'big_tech', 'https://code.visualstudio.com', 'https://github.com/microsoft/vscode', 'Popular open-source code editor by Microsoft'),
+  ('b1000000-0000-0000-0000-000000000006', 'Claude', 'Anthropic', 'startup', 'https://claude.ai', NULL, 'AI assistant and platform by Anthropic'),
+  ('b1000000-0000-0000-0000-000000000007', 'Cisco AI Defense', 'Cisco', 'big_tech', 'https://www.cisco.com', NULL, 'Zero Trust security framework for AI agents and multi-agent systems');
+
+-- Real releases (April 1–9, 2026)
+INSERT INTO releases (product_id, version, title, release_date, category, summary, is_major, tags, changelog_url) VALUES
+  ('b1000000-0000-0000-0000-000000000007', NULL, 'Cisco Zero Trust for AI Agents at RSA 2026', '2026-04-01', 'security', 'New Zero Trust architecture for autonomous AI agents with real-time policy enforcement, anomaly detection, and DefenseClaw open-source framework.', true, ARRAY['zero-trust','ai-agents','rsa-2026','security'], 'https://newsroom.cisco.com/c/r/newsroom/en/us/a/y2026/m03/cisco-reimagines-security-for-the-agentic-workforce.html'),
+  ('b1000000-0000-0000-0000-000000000001', '4.0', 'Gemma 4 Open Model Family Released', '2026-04-02', 'ai_ml', 'Four model sizes (E2B, E4B, 26B MoE, 31B Dense) under Apache 2.0 license. 31B ranks #3 on Arena AI at 1452 Elo. Runs offline on edge devices.', true, ARRAY['open-source','llm','on-device','apache-2.0'], 'https://blog.google/innovation-and-ai/technology/developers-tools/gemma-4/'),
+  ('b1000000-0000-0000-0000-000000000002', '3.6-Plus', 'Qwen 3.6-Plus Flagship Model', '2026-04-02', 'ai_ml', '1M token context window, 65K output tokens, always-on chain-of-thought, native function calling. Competitive with Claude 4.5 Opus on agentic coding.', true, ARRAY['llm','agentic','function-calling','alibaba'], 'https://qwenlm.github.io'),
+  ('b1000000-0000-0000-0000-000000000003', '3.0', 'Cursor 3 — Agent-First IDE', '2026-04-02', 'devtools', 'Unified agent-first workspace with Agents Window for parallel agents across local, cloud, worktree, and SSH environments. Adds Design Mode.', true, ARRAY['ide','ai-agents','developer-tools'], 'https://cursor.com/blog/cursor-3'),
+  ('b1000000-0000-0000-0000-000000000004', NULL, 'GitHub Copilot SDK Public Preview', '2026-04-02', 'devtools', 'SDK to embed Copilot agent runtime in apps. Supports Node.js, Python, Go, .NET, Java. Includes streaming, tool invocation, BYOK, and OpenTelemetry.', true, ARRAY['sdk','ai-agents','copilot','open-source'], 'https://github.blog/changelog/2026-04-02-copilot-sdk-in-public-preview/'),
+  ('b1000000-0000-0000-0000-000000000006', NULL, 'Claude Mythos Preview Announced', '2026-04-07', 'ai_ml', 'Most capable Anthropic model to date. Gated access via Project Glasswing for 50 organizations to scan infrastructure for cybersecurity vulnerabilities.', true, ARRAY['llm','cybersecurity','restricted-access'], 'https://red.anthropic.com/2026/mythos-preview/'),
+  ('b1000000-0000-0000-0000-000000000005', '1.115', 'VS Code 1.115 with Agents App', '2026-04-08', 'devtools', 'Introduces VS Code Agents companion app for agent-native development. Terminal image paste, background notifications for agents, pinch-to-zoom browser.', false, ARRAY['ide','ai-agents','weekly-release'], 'https://code.visualstudio.com/updates/v1_115'),
+  ('b1000000-0000-0000-0000-000000000006', NULL, 'Claude Managed Agents Public Beta', '2026-04-09', 'ai_ml', 'Cloud-based suite for deploying AI agents without managing infrastructure. Automates execution, state management, orchestration. Early adopters include Notion, Asana, Sentry.', true, ARRAY['ai-agents','platform','enterprise','public-beta'], 'https://platform.claude.com/docs/en/release-notes/overview');
