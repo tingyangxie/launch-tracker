@@ -4,6 +4,7 @@ import { Suspense, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { CalendarDays } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 
 function LoginForm() {
   const params = useSearchParams();
@@ -34,23 +35,29 @@ function LoginForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-      <input
-        type="password"
-        value={code}
-        onChange={(e) => setCode(e.target.value)}
-        placeholder="Access code"
-        autoFocus
-        autoComplete="off"
-        className="w-full rounded-[3px] border border-input bg-background px-3 py-2.5 text-foreground placeholder:text-muted-foreground outline-none transition-colors focus:border-ring focus:ring-2 focus:ring-ring/30"
-      />
-
-      {error ? (
-        <p className="text-sm text-destructive">{error}</p>
-      ) : null}
+    <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+      <div className="flex flex-col gap-2">
+        <label htmlFor="access-code" className="lt-technical-label">
+          Access Code
+        </label>
+        <Input
+          id="access-code"
+          type="password"
+          value={code}
+          onChange={(e) => setCode(e.target.value)}
+          autoFocus
+          autoComplete="off"
+          aria-invalid={error ? true : undefined}
+        />
+        {error ? (
+          <p className="text-xs tracking-[-0.01em] text-destructive">
+            {error}
+          </p>
+        ) : null}
+      </div>
 
       <Button type="submit" disabled={loading || !code} className="w-full">
-        {loading ? "..." : "Enter"}
+        {loading ? "Signing in…" : "Continue"}
       </Button>
     </form>
   );
@@ -59,20 +66,29 @@ function LoginForm() {
 export default function LoginPage() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
-      <div className="w-full max-w-sm">
-        <div className="mb-10 flex flex-col items-center gap-3">
-          <CalendarDays className="h-7 w-7 text-foreground" />
-          <h1 className="text-[1.5rem] font-medium tracking-[-0.03em] text-foreground">
-            Launch Tracker
-          </h1>
-          <p className="text-sm text-muted-foreground">
-            Enter access code to continue
-          </p>
+      <div className="w-full max-w-[22rem]">
+        <div className="mb-10 flex flex-col items-start gap-6">
+          <div className="flex items-center gap-2 text-[0.95rem] font-medium tracking-[-0.02em] text-foreground">
+            <CalendarDays className="h-4 w-4" />
+            <span>Launch Tracker</span>
+          </div>
+          <div className="flex flex-col gap-2">
+            <h1 className="text-[1.75rem] font-[420] leading-[1.08] tracking-[-0.035em] text-foreground">
+              Sign in
+            </h1>
+            <p className="text-sm tracking-[-0.012em] text-muted-foreground">
+              Enter your access code to continue.
+            </p>
+          </div>
         </div>
 
         <Suspense fallback={null}>
           <LoginForm />
         </Suspense>
+
+        <p className="lt-technical-label mt-10">
+          Private · Access required
+        </p>
       </div>
     </div>
   );
