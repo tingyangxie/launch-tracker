@@ -56,7 +56,11 @@ function LoginForm() {
         ) : null}
       </div>
 
-      <Button type="submit" disabled={loading || !code} className="w-full">
+      <Button
+        type="submit"
+        disabled={loading || !code}
+        className="w-full bg-foreground text-background hover:bg-interactive hover:text-interactive-foreground"
+      >
         {loading ? "Signing in…" : "Continue"}
       </Button>
     </form>
